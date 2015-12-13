@@ -6,35 +6,40 @@ import scheduleSerializer from './schedule.serializer';
 
 // Get list of schedules
 exports.index = function(req, res) {
-  Schedule.find().lean().exec(function (err, schedules) {
+  Schedule.find().exec(function (err, schedules) {
     if(err) { return handleError(res, err); }
 
     res.status(200);
 
-    Schedule.populate(schedules, '_client _sitter', function(err, schedules) {
-      return serializer(schedules, res);
+    Schedule.populate(schedules, 'client sitter', function(err, schedules) {
+      let sch = schedules.map((schedule)=> {
+        return schedule.toObject();
+      });
+
+      return serializer(sch, res);
     });
   });
 };
 
 // Get a single schedule
 exports.show = function(req, res) {
-  Schedule.findById(req.params.id).lean().exec(function (err, schedule) {
+  Schedule.findById(req.params.id).exec(function (err, schedule) {
     if(err) { return handleError(res, err); }
     if(!schedule) { return res.status(404).send('Not Found'); }
 
-    Schedule.populate(schedule, '_client _sitter', function(err, schedule) {
-      return serializer(schedule, res);
+    Schedule.populate(schedule, 'client sitter', function(err, schedule) {
+      return serializer(schedule.toObject(), res);
     });
   });
 };
 
 // Creates a new schedule in the DB.
 exports.create = function(req, res) {
+  console.log('req.body', req.body);
   var newSchedule = new Schedule({
     date: req.body.data.attributes.date,
-    _sitter: req.body.data.relationships.sitter.data.id,
-    _client: req.body.data.relationships.client.data.id
+    sitter: req.body.data.relationships.sitter.data.id,
+    client: req.body.data.relationships.client.data.id
   });
 
   newSchedule.save(function (err, schedule) {
@@ -42,8 +47,8 @@ exports.create = function(req, res) {
 
     res.status(201);
 
-    Schedule.populate(schedule, '_client _sitter', function(err, schedule) {
-      return serializer(schedule.toJSON(), res);
+    Schedule.populate(schedule, 'client sitter', function(err, schedule) {
+      return serializer(schedule.toObject(), res);
     });
   });
 };
@@ -63,7 +68,7 @@ exports.update = function(req, res) {
       res.status(200);
 
       Schedule.populate(schedule, '_client _sitter', function(err, schedule) {
-        return serializer(schedule.toJSON(), res);
+        return serializer(schedule.toObject(), res);
       });
     });
   });

@@ -13,16 +13,28 @@ function scheduleSerializer(schedule) {
           return `http://${serverUrl}/api/schedules/${schedule._id}`
         }
       },
-      attributes: ['date', '_sitter', '_client'],
+      attributes: ['date', 'sitter', 'client'],
       sitter: {
-        id: '_id',
-        ref: '_sitter',
-        attributes: ['familyName', 'phone']
+        ref: '_id',
+        attributes: ['firstName', 'phone'],
+        relationshipLinks: {
+          "self": "http://example.com/relationships/books",
+          "related": "http://example.com/books"
+        },
+        includedLinks: {
+          self: function (schedule, sitter) {
+            return `http://${serverUrl}/api/client/${sitter._id}`
+          }
+        }
       },
       client: {
-        id: '_id',
-        ref: '_client',
-        attributes: ['firstName', 'phone']
+        ref: '_id',
+        attributes: ['familyName', 'phone'],
+        includedLinks: {
+          self: function (schedule, client) {
+            return `http://${serverUrl}/api/client/${client._id}`
+          }
+        }
       }
     });
   };
