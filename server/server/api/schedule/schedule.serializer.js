@@ -17,12 +17,12 @@ function scheduleSerializer(schedule) {
       sitter: {
         id: '_id',
         ref: '_sitter',
-        attributes: ['first-name', 'phone']
+        attributes: ['familyName', 'phone']
       },
       client: {
         id: '_id',
         ref: '_client',
-        attributes: ['family-name', 'phone']
+        attributes: ['firstName', 'phone']
       }
     });
   };

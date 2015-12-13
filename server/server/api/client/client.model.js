@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const ClientSchema = new Schema({
-  'first-name': String,
+  familyName: String,
   phone: String
 });
 

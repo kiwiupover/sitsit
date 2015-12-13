@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const SitterSchema = new Schema({
-  'family-name': String,
+  firstName: String,
   phone: String
 });
 

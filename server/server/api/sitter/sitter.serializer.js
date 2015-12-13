@@ -13,7 +13,7 @@ function sitterSerializer(sitter) {
           return `http://${serverUrl}/api/sitters/${sitter._id}`
         }
       },
-      attributes: ['family-name', 'phone'],
+      attributes: ['firstName', 'phone'],
     });
   };
 }
