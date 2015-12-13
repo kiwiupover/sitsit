@@ -1,0 +1,12 @@
+{{outlet}}
+<h1>Schedules</h1>
+
+model: {{model}}
+{{#each model as |schedule|}}
+  <p class="date">{{schedule.date}}</p>
+{{/each}}
+
+<label>
+  Start date:
+  {{pikaday-input value=startsAt theme="dark-theme"}}
+</label>
