@@ -12,6 +12,11 @@ export default Ember.Route.extend({
     });
   },
 
+  setupController(){
+    this._super(...arguments);
+    this.controller.set('minDate', new Date());
+  },
+
   actions: {
     sitterSelected(sitter){
       let theSitter = this.store.peekRecord('sitter', sitter);
