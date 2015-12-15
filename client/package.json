@@ -44,6 +44,7 @@
     "node-refills": "^1.0.1"
   },
   "dependencies": {
-    "ember-semantic-ui": "0.0.5"
+    "ember-semantic-ui": "0.0.5",
+    "liquid-fire": "^0.22.0"
   }
 }
