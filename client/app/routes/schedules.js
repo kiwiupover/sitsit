@@ -30,6 +30,14 @@ export default Ember.Route.extend({
       console.log('client', theClient);
     },
 
+    setStartTime(time){
+      this.controller.set('startTime', time);
+    },
+
+    setEndTime(time){
+      this.controller.set('endTime', time);
+    },
+
     save(){
       let newSchedule = this.store.createRecord('schedule', {
         date: this.controller.get('startsAt'),

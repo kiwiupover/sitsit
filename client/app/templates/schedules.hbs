@@ -17,6 +17,24 @@
   {{pikaday-input value=startsAt minDate=minDate theme="dark-theme"}}
 </label>
 
+<h2>Select start time:</h2>
+
+<p>
+  Start time: {{startTime}}
+</p>
+<p>
+  End time: {{endTime}}
+</p>
+
+{{#unless startTime}}
+  {{time-selector action='setStartTime'}}
+{{/unless}}
+
+{{#if startTime}}
+  {{time-selector action='setEndTime'}}
+{{/if}}
+
+
 {{sit-select
   label='Who will be the sitter'
   prompt='Select a baby sitter'

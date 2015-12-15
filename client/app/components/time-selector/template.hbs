@@ -1,0 +1,31 @@
+<h2>the time: {{time}}</h2>
+<div class="row between-xs">
+  {{#each times as |time|}}
+    <button class="box {{if (is-equal time theTime) 'selected'}}" {{action 'setTime' time}}>
+        {{time}}
+    </button>
+  {{/each}}
+</div>
+
+<div class="row between-xs">
+  {{#each minutes as |minute|}}
+    <button class="box {{if (is-equal minute theMinutes) 'selected'}}" {{action 'setMinutes' minute}}>
+        {{minute}} mins
+    </button>
+  {{/each}}
+</div>
+
+<div class="row between-xs">
+  <button class="box {{if (is-equal amPM 'AM') 'selected'}}" {{action 'setAmPm' 'AM'}} >
+      AM
+  </button>
+  <button class="box {{if (is-equal amPM 'PM') 'selected'}}" {{action 'setAmPm' 'PM'}}>
+      PM
+  </button>
+</div>
+
+<div class="row around-xs">
+  <button class="box" {{action 'continue'}}>
+      Continue
+  </button>
+</div>
