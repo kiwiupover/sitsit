@@ -1,0 +1,18 @@
+{{outlet}}
+<label>
+  Start date:
+  {{pikaday-input value=startsAt minDate=minDate theme="dark-theme"}}
+</label>
+
+{{sit-select
+  label='Sitting for Who'
+  prompt='Select a Cleint'
+  content=model.clients
+  optionValue='id'
+  optionLabel='familyName'
+  value=familyName
+  isEditing=true
+  name="client"
+  onSelect='clientSelected'}}
+
+{{link-to 'Continue' 'schedules.start-time'}}

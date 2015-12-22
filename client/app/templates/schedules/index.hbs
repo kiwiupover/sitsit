@@ -1,0 +1,13 @@
+<h1>Schedules</h1>
+
+{{#each model.schedules as |schedule|}}
+  <h3>
+    {{schedule.sitter.firstName}}
+    is sitting for the
+    {{schedule.client.familyName}}
+    on
+    {{format-date schedule.date}}
+  </h3>
+{{/each}}
+
+{{link-to 'Create a Schedule' 'schedules.date' }}

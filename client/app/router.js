@@ -6,7 +6,12 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('schedules');
+  this.route('schedules', function() {
+    this.route('date');
+    this.route('start-time');
+    this.route('end-time');
+    this.route('sitter');
+  });
   this.route('clients');
   this.route('sitters');
 });
