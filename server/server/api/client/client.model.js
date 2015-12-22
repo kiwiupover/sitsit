@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 
 const ClientSchema = new Schema({
   familyName: String,
-  phone: String
+  primaryPhone: String,
+  secondaryPhone: String
 });
 
 export default mongoose.model('Client', ClientSchema);

@@ -27,11 +27,11 @@
 </p>
 
 {{#unless startTime}}
-  {{time-selector action='setStartTime'}}
+  {{time-selector startHour=startHour action='setStartTime'}}
 {{/unless}}
 
 {{#if startTime}}
-  {{time-selector action='setEndTime'}}
+  {{time-selector startHour=startHour action='setEndTime'}}
 {{/if}}
 
 

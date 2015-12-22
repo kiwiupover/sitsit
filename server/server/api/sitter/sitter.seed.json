@@ -1,10 +1,14 @@
 [
 	{
 		"firstName": "Corrie",
-		"phone": "206 435 2333"
+		"phone": "206 965 0804",
+		"parentPrimaryPhone": "206 434 2508",
+		"parentSecondayPhone": "206 434 2487"
 	},
 	{
 		"firstName": "Drea",
-		"phone": "206 444 4444"
+		"phone": "206 390 1255",
+		"parentPrimaryPhone": "206 434 2508",
+		"parentSecondayPhone": "206 434 2487"
 	}
 ]

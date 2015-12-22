@@ -14,6 +14,12 @@ export default Ember.Component.extend({
     return `${this.get('theTime')} :${this.get('theMinutes')} ${this.get('amPM')}`
   }),
 
+  willRender() {
+    if (!this.theTime ) {
+      this.set('theTime', this.startHour.toString());
+    }
+  },
+
   actions: {
     setTime(time) {
       this.set('theTime', time);

@@ -13,7 +13,7 @@ function clientSerializer(client) {
           return `http://${serverUrl}/api/clients/${client._id}`
         }
       },
-      attributes: ['familyName', 'phone'],
+      attributes: ['familyName', 'primaryPhone', 'secondaryPhone'],
     });
   };
 }

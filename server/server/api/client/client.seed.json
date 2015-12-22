@@ -1,10 +1,12 @@
 [
 	{
 		"familyName": "Rupps",
-		"phone": "206 434 2444"
+		"primaryPhone": "206 434 2444",
+		"secondaryPhone": "206 444 2222"
 	},
 	{
 		"familyName": "Hardy's",
-		"phone": "206 997 2343"
+		"primaryPhone": "206 997 2343",
+		"secondaryPhone": "206 444 2222"
 	}
 ]

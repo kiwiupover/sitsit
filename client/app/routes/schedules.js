@@ -14,7 +14,13 @@ export default Ember.Route.extend({
 
   setupController(){
     this._super(...arguments);
-    this.controller.set('minDate', new Date());
+
+    let dateNow = new Date();
+
+    this.controller.setProperties({
+      minDate: dateNow,
+      startHour: dateNow.getUTCHours()
+    });
   },
 
   actions: {
