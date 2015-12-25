@@ -7,7 +7,8 @@ module.exports = function(defaults) {
     // Add options here
   });
 
-  // app.import('bower_components/flexboxgrid/src/css/flexboxgrid.css');
+  app.import('./vendor/semantic.css');
+  app.import('./vendor/semantic.js');
 
   // Use `app.import` to add additional libraries to the generated
   // output files.

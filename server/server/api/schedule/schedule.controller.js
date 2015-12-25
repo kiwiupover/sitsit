@@ -37,7 +37,8 @@ exports.show = function(req, res) {
 exports.create = function(req, res) {
   console.log('req.body', req.body);
   var newSchedule = new Schedule({
-    date: req.body.data.attributes.date,
+    startDate: req.body.data.attributes['start-date'],
+    endDate: req.body.data.attributes['end-date'],
     sitter: req.body.data.relationships.sitter.data.id,
     client: req.body.data.relationships.client.data.id
   });
@@ -67,7 +68,7 @@ exports.update = function(req, res) {
 
       res.status(200);
 
-      Schedule.populate(schedule, '_client _sitter', function(err, schedule) {
+      Schedule.populate(schedule, 'client sitter', function(err, schedule) {
         return serializer(schedule.toObject(), res);
       });
     });

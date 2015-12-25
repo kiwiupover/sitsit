@@ -13,7 +13,7 @@ function scheduleSerializer(schedule) {
           return `http://${serverUrl}/api/schedules/${schedule._id}`
         }
       },
-      attributes: ['date', 'sitter', 'client'],
+      attributes: ['startDate', 'endDate', 'sitter', 'client'],
       sitter: {
         ref: '_id',
         attributes: ['firstName', 'phone'],

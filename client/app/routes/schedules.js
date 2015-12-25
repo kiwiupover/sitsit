@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import moment from 'moment';
 
 const { RSVP, isBlank } = Ember
 
@@ -15,15 +16,10 @@ export default Ember.Route.extend({
   setupController(){
     this._super(...arguments);
 
-    let dateNow = new Date();
-
-    this.controller.setProperties({
-      minDate: dateNow,
-      startHour: dateNow.getUTCHours()
-    });
+    this.setupSchedule();
 
     if (isBlank(this.controller.get('startTime'))) {
-      this.transitionTo('schedules.date');
+      this.transitionTo('schedules.index');
     }
   },
 
@@ -40,25 +36,49 @@ export default Ember.Route.extend({
     },
 
     setStartTime(time){
+      console.log('start time', time);
       this.controller.set('startTime', time);
       this.transitionTo('schedules.end-time');
     },
 
     setEndTime(time){
+      console.log('end time', time);
       this.controller.set('endTime', time);
       this.transitionTo('schedules.sitter');
     },
 
     save(){
+      let startDate = moment(this.controller.get('startsAt'));
+      let endDate = moment(this.controller.get('startsAt'));
+
+      startDate.set(this.controller.get('startTime'));
+      endDate.set(this.controller.get('endTime'));
+
       let newSchedule = this.store.createRecord('schedule', {
-        date: this.controller.get('startsAt'),
+        startDate: startDate.toDate(),
+        endDate: endDate.toDate(),
         sitter:  this.controller.get('sitter'),
         client:  this.controller.get('client')
       });
 
       newSchedule.save();
 
+      this.setupSchedule();
+
       this.transitionTo('schedules');
     }
+  },
+
+  setupSchedule(){
+    let dateNow = new Date();
+
+    this.controller.setProperties({
+      minDate: dateNow,
+      startHour: dateNow.getUTCHours(),
+      startsAt: null,
+      sitter: null,
+      client: null
+
+    });
   }
 });

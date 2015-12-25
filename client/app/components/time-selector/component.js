@@ -11,7 +11,17 @@ export default Ember.Component.extend({
   amPM: 'PM',
 
   time: computed('theTime', 'theMinutes', 'amPM', function(){
-    return `${this.get('theTime')} :${this.get('theMinutes')} ${this.get('amPM')}`
+    let hour = parseInt(this.get('theTime'), 10) - 1;
+    let minutes = this.get('theMinutes');
+
+    if (this.get('amPM') === 'PM') {
+      hour = hour + 11;
+    }
+
+    return {
+      hours: hour,
+      minutes: minutes
+    }
   }),
 
   willRender() {

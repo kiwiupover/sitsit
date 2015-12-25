@@ -25,8 +25,7 @@ exports.show = function(req, res) {
 
 // Creates a new client in the DB.
 exports.create = function(req, res) {
-  console.log('req.body.data', req.body.data.attributes);
-  Client.create(req.body.data.attributes, function(err, client) {
+   Client.create(req.body.data.attributes, function(err, client) {
     if(err) { return handleError(res, err); }
     res.status(201)
 
