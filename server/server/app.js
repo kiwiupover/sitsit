@@ -2,7 +2,7 @@ import ENV from 'dotenv';
 
 ENV.load();
 
-console.log('ENV', process.env.TwilioTestAccountSID);
+console.log('ENV', process.env.TwilioTesting);
 
 /**
  * Main application file
