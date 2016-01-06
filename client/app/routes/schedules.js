@@ -72,8 +72,9 @@ export default Ember.Route.extend({
       startHour: dateNow.getUTCHours(),
       startsAt: null,
       sitter: null,
-      client: null
-
+      client: null,
+      startDate: null,
+      endDate: null
     });
   }
 });
