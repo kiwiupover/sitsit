@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import moment from 'moment';
 
 const { computed } = Ember;
 
@@ -11,17 +12,23 @@ export default Ember.Component.extend({
   amPM: 'PM',
 
   time: computed('theTime', 'theMinutes', 'amPM', function(){
-    let hour = parseInt(this.get('theTime'), 10) - 1;
+    let hour = parseInt(this.get('theTime'), 10);
     let minutes = this.get('theMinutes');
 
     if (this.get('amPM') === 'PM') {
-      hour = hour + 11;
+      hour = hour + 12;
     }
 
     return {
       hours: hour,
       minutes: minutes
     }
+  }),
+
+  displayTime: computed('time', function(){
+    let ret = moment().hour(this.get('time').hours).minute(this.get('time').minutes).seconds('00');
+
+    return ret.format('LT');
   }),
 
   willRender() {

@@ -1,4 +1,4 @@
-<h2>the time: {{time}}</h2>
+<h2>the time: {{displayTime}}</h2>
 <div class="row between-xs">
   {{#each times as |time|}}
     <button class="box {{if (is-equal time theTime) 'selected'}}" {{action 'setTime' time}}>
@@ -25,7 +25,7 @@
 </div>
 
 <div class="row around-xs">
-  <button class="box" {{action 'continue'}}>
+  <button class="ui button primary" {{action 'continue'}}>
       Continue
   </button>
 </div>

@@ -1,0 +1,22 @@
+{{#if startsAt}}
+  On {{format-date startsAt format='L'}},
+{{/if}}
+
+{{#if client}}
+  {{client.familyName}} wants
+{{/if}}
+
+{{#if sitter}}
+  {{sitter.firstName}} to baby sit
+{{/if}}
+
+{{#if startDate}}
+  from
+  {{format-date startDate format='LT'}}
+{{/if}}
+
+{{#if endDate}}
+  to about
+  {{format-date endDate format='LT'}}
+{{/if}}
+{{outlet}}

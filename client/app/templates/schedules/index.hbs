@@ -5,12 +5,12 @@
     {{schedule.sitter.firstName}}
     is sitting for the
     {{schedule.client.familyName}}
-    {{format-date schedule.startDate format='ddd MMM Do'}}
+    {{format-date schedule.startDate format='LL'}}
     starting at
-    {{format-date schedule.startDate format='h:mm A'}}
+    {{format-date schedule.startDate format='LT'}}
     finishing about
-    {{format-date schedule.endDate format='h:mm A'}}
+    {{format-date schedule.endDate format='LT'}}
   </h3>
 {{/each}}
 
-{{link-to 'Create a Schedule' 'schedules.date' class='ui primary button'}}
+{{link-to 'Create a Schedule' 'schedules.setup.date' class='ui primary button'}}

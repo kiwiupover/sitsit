@@ -1,11 +1,10 @@
-{{outlet}}
 <form class="ui form">
 
   <div class="field">
     <label>Start date:</label>
     {{pikaday-input value=startsAt minDate=minDate theme="dark-theme"}}
   </div>
-  
+
   {{sit-select
     label='Sitting for Who'
     prompt='Select a Cleint'
@@ -15,7 +14,20 @@
     value=familyName
     isEditing=true
     name="client"
+    class='field'
     onSelect='clientSelected'}}
-</form>
 
-{{link-to 'Continue' 'schedules.start-time' class='ui primary button'}}
+  {{sit-select
+    label='Who will be the sitter'
+    prompt='Select a baby sitter'
+    content=model.sitters
+    optionValue='id'
+    optionLabel='firstName'
+    value=sitter
+    isEditing=true
+    name="sitter"
+    class='field'
+    onSelect='sitterSelected'}}
+
+  {{link-to 'Continue' 'schedules.setup.start-time' class='ui primary button'}}
+</form>
