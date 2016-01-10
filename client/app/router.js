@@ -8,7 +8,7 @@ const Router = Ember.Router.extend({
 Router.map(function() {
   this.route('schedules', function() {
     this.route('setup', function(){
-      this.route('date');
+      this.route('details');
       this.route('start-time');
       this.route('end-time');
       this.route('confirm');

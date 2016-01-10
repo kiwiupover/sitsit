@@ -24,6 +24,10 @@ export default Ember.Route.extend({
   },
 
   actions: {
+    startDate(date){
+      this.controller.set('startsAt', date);
+    },
+
     sitterSelected(sitter){
       let theSitter = this.store.peekRecord('sitter', sitter);
       this.controller.set('sitter', theSitter);

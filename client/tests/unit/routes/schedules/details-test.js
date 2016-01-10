@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('route:schedules/date', 'Unit | Route | schedules/date', {
+moduleFor('route:schedules/details', 'Unit | Route | schedules/date', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });

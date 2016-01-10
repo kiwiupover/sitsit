@@ -22,7 +22,7 @@ export default Ember.Component.extend({
     return {
       hours: hour,
       minutes: minutes
-    }
+    };
   }),
 
   displayTime: computed('time', function(){
