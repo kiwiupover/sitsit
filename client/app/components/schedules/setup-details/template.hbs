@@ -1,8 +1,11 @@
 <form class="ui form">
 
-  <div class="field">
+  <div class="field {{if isStartDateInvalid 'error'}}">
     <label>Start date:</label>
     {{pikaday-input value=startsAt minDate=minDate theme="dark-theme"}}
+    {{#if isStartDateInvalid}}
+      <p class="ui {{if isStartDateInvalid 'error'}}">{{v-get this 'startDate' 'message'}}</p>
+    {{/if}}
   </div>
 
   {{sit-select
@@ -15,6 +18,8 @@
     isEditing=true
     name="client"
     class='field'
+    isInvalid=isClientInvalid
+    error=(v-get this 'client' 'message')
     onSelect=(action 'clientSelected')}}
 
   {{sit-select
@@ -27,7 +32,9 @@
     isEditing=true
     name="sitter"
     class='field'
+    isInvalid=isSitterInvalid
+    error=(v-get this 'sitter' 'message')
     onSelect=(action 'sitterSelected')}}
 
-  {{link-to 'Continue' 'schedules.setup.start-time' class='ui primary button fluid'}}
+  <button {{action 'advance'}} type="button" name="button" class='ui primary button fluid'>Continue</button>
 </form>

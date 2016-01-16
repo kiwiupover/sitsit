@@ -12,7 +12,7 @@ export default Ember.Component.extend({
   /**
    * Class names to apply to the component's element.
    */
-  classNameBindings: ['label:form-group', 'error:has-error'],
+  classNameBindings: ['isInvalid:error'],
 
   /**
    * The error message (optional).
@@ -63,6 +63,8 @@ export default Ember.Component.extend({
    * Indicates whether the field should be marked as required.
    */
   isRequired: false,
+
+  isInvalid: false,
 
   /**
    * Builds and returns the list of options based on the content.

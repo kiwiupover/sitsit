@@ -52,6 +52,10 @@ export default Ember.Route.extend({
       this.transitionTo('schedules.setup.confirm');
     },
 
+    toStartTime() {
+      this.transitionTo('schedules.setup.start-time');
+    },
+
     save(){
       let newSchedule = this.store.createRecord('schedule', {
         startDate: this.controller.get('startDate'),
