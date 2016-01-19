@@ -1,10 +1,9 @@
 {{schedules/setup-details
   minDate=minDate
-  startsAt='startDate'
-  clientSelected='clientSelected'
-  sitterSelected='sitterSelected'
   newSchedule=model.newSchedule
   clients=model.clients
   sitters=model.sitters
-  toStartTime=(route-action 'toStartTime')
-  }}
+  startsAt=(route-action 'startDate')
+  clientSelected='clientSelected'
+  sitterSelected='sitterSelected'
+  transitionToStartTime=(route-action 'transitionToStartTime')}}

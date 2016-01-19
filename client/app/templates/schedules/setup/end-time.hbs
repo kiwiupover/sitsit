@@ -1,3 +1,5 @@
-<h2>Select an end time:</h2>
-
-{{time-selector startHour=startHour action='setEndTime' }}
+{{schedules/end-time
+  startDate=startDate
+  endDate=endDate
+  setTime=(route-action 'setEndTime')
+  transition=(route-action 'transitionToConfirm')}}

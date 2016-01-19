@@ -13,7 +13,7 @@ export default Ember.Route.extend({
     });
   },
 
-  setupController(){
+  setupController() {
     this._super(...arguments);
 
     this.setupSchedule();
@@ -24,39 +24,45 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    startDate(date){
+    startDate(date) {
       this.controller.set('startsAt', date);
     },
 
-    sitterSelected(sitter){
+    sitterSelected(sitter) {
       let theSitter = this.store.peekRecord('sitter', sitter);
       this.controller.set('sitter', theSitter);
     },
 
-    clientSelected(client){
+    clientSelected(client) {
       let theClient = this.store.peekRecord('client', client);
       this.controller.set('client', theClient);
     },
 
-    setStartTime(time){
+    setStartTime(time) {
       let startDate = moment(this.controller.get('startsAt'));
       startDate.set(time);
       this.controller.set('startDate', startDate.toDate());
-      this.transitionTo('schedules.setup.end-time');
     },
 
-    setEndTime(time){
+    setEndTime(time) {
       let endDate = moment(this.controller.get('startsAt'));
       endDate.set(time);
       this.controller.set('endDate', endDate.toDate());
-      this.transitionTo('schedules.setup.confirm');
     },
 
-    toStartTime() {
+    transitionToStartTime() {
       this.transitionTo('schedules.setup.start-time');
     },
 
-    save(){
+    transitionToEndTime() {
+      this.transitionTo('schedules.setup.end-time');
+    },
+
+    transitionToConfirm() {
+      this.transitionTo('schedules.setup.confirm');
+    },
+
+    save() {
       let newSchedule = this.store.createRecord('schedule', {
         startDate: this.controller.get('startDate'),
         endDate: this.controller.get('endDate'),
@@ -72,7 +78,7 @@ export default Ember.Route.extend({
     }
   },
 
-  setupSchedule(){
+  setupSchedule() {
     let dateNow = new Date();
 
     this.controller.setProperties({

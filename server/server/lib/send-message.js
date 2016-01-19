@@ -9,7 +9,7 @@ function sendMessage(numbers, message) {
   if (numbers.length === undefined) { return } ;
 
   if (process.env.TwilioTesting === 'true') {
-    numbers = ['+642108302492'];
+    numbers = [process.env.TwilioTestPhone];
   }
 
   return numbers.forEach(function(number){

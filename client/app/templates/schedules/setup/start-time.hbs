@@ -1,3 +1,4 @@
-<h2>Select start time:</h2>
-
-{{time-selector startHour=startHour action='setStartTime'}}
+{{schedules/start-time
+  startHour=startHour
+  setTime=(route-action 'setStartTime')
+  transitionToEndTime=(route-action 'transitionToEndTime')}}

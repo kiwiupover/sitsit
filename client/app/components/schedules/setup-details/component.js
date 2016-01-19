@@ -28,7 +28,7 @@ export default Ember.Component.extend(Validations, {
   sendStartAt: observer('startsAt', function(){
     if (this.startsAt) {
       this.set('startDate', this.get('startsAt'));
-      this.sendAction('startsAt', this.get('startsAt'));
+      this.attrs.startsAt(this.get('startsAt'));
     }
   }),
 
@@ -49,7 +49,7 @@ export default Ember.Component.extend(Validations, {
 
       this.validate().then(({comp, validations}) => {
         if (validations.get('isValid')) {
-          this.attrs.toStartTime();
+          this.attrs.transitionToStartTime();
         }
       }, (errors) => {
         console.log('errors', errors);

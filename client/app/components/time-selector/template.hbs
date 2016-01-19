@@ -2,16 +2,16 @@
 <div class="col-xs-12">
   <div class="row between-xs">
     {{#each times as |time|}}
-      <button class="box {{if (is-equal time theTime) 'selected'}}" {{action 'setTime' time}}>
-          {{time}}
+      <button class="box {{if (is-equal time hour) 'selected'}}" {{action 'setHour' time}}>
+        {{time}}
       </button>
     {{/each}}
   </div>
 
   <div class="row between-xs">
-    {{#each minutes as |minute|}}
-      <button class="box {{if (is-equal minute theMinutes) 'selected'}}" {{action 'setMinutes' minute}}>
-          {{minute}} mins
+    {{#each minutes as |min|}}
+      <button class="box {{if (is-equal min minute) 'selected'}}" {{action 'setMinutes' min}}>
+        {{min}} mins
       </button>
     {{/each}}
   </div>
@@ -24,9 +24,17 @@
         PM
     </button>
   </div>
-
+  {{#if isInvalid}}
+    <div class="row">
+      <div class="ui">
+        <p>
+          {{v-get this 'hour' 'message'}}
+        </p>
+      </div>
+    </div>
+  {{/if}}
   <div class="row around-xs">
-    <button class="ui button primary fluid" {{action 'continue'}}>
+    <button class="ui button primary fluid" {{action 'setTime'}} disabled={{isInvalid}}>
         Continue
     </button>
   </div>
