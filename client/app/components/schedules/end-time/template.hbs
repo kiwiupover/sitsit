@@ -1,3 +1,7 @@
 <h2>Select an end time:</h2>
-
-{{time-selector setTime=(action 'setEndTime') }}
+{{#if showEndDateErrorMessage}}
+  <p class="ui error">
+    {{endDateErrorMessage}}
+  </p>
+{{/if}}
+{{time-selector setTime=(action 'setEndTime') errorMessage=endDateErrorMessage}}
