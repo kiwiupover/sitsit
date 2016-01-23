@@ -1,4 +1,5 @@
 import ENV from 'dotenv';
+import scheduler from './lib/scheduler';
 
 ENV.load();
 
@@ -14,6 +15,8 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 const express = require('express');
 const mongoose = require('mongoose');
 const config = require('./config/environment');
+
+scheduler();
 
 // Connect to database
 mongoose.connect(config.mongo.uri, config.mongo.options);

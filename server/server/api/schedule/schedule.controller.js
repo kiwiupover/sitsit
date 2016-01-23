@@ -1,8 +1,7 @@
 import _ from 'lodash';
-import sendMessage from '../../lib/send-message';
+import sendMessages from '../../lib/send-messages';
 import Schedule from './schedule.model';
 import Sitter from '../sitter/sitter.model';
-import formatDate from '../../lib/format-date';
 
 import ENV from 'dotenv';
 ENV.load();
@@ -28,6 +27,7 @@ exports.index = function(req, res) {
 
 // Get a single schedule
 exports.show = function(req, res) {
+
   Schedule.findById(req.params.id).exec(function (err, schedule) {
     if(err) { return handleError(res, err); }
     if(!schedule) { return res.status(404).send('Not Found'); }
@@ -53,23 +53,7 @@ exports.create = function(req, res) {
 
     res.status(201);
 
-    Schedule.populate(schedule, 'client sitter', function(err, schedule) {
-      let date = formatDate(schedule.startDate, 'ddd MMM Do');
-      let startTime = formatDate(schedule.startDate, 'h:mm A');
-      let endTime = formatDate(schedule.endDate, 'h:mm A');
-      let message = '';
-
-      if( process.env.TwilioTesting === 'true' ) {
-        message += 'This is only a test. ';
-      }
-
-      message += `${schedule.sitter.firstName} is baby sitting for the ${schedule.client.familyName}'s on ${date}`;
-      message += ` starting at ${startTime} finishing about ${endTime}`;
-
-      sendMessage(phoneNumbers(schedule), message, function(){
-        return serializer(schedule.toObject(), res);
-      });
-    });
+    sendMessages(schedule);
   });
 };
 
@@ -113,25 +97,4 @@ function serializer(model, res) {
 
 function handleError(res, err) {
   return res.status(500).send(err);
-}
-
-/**
- * return an array of phone numbers
- */
-function phoneNumbers(model) {
-  let phoneNumbers = [];
-
-  isPhonePresentPushNumber(model.client.primaryPhone, phoneNumbers);
-  isPhonePresentPushNumber(model.client.secondaryPhone, phoneNumbers);
-  isPhonePresentPushNumber(model.sitter.phone, phoneNumbers);
-  isPhonePresentPushNumber(model.sitter.parentPrimaryPhone, phoneNumbers);
-  isPhonePresentPushNumber(model.sitter.parentSecondayPhone, phoneNumbers);
-
-  return phoneNumbers;
-}
-
-function isPhonePresentPushNumber(phoneNumber, array){
-  if (phoneNumber) {
-    return array.push(phoneNumber)
-  }
 }
