@@ -40,7 +40,6 @@ exports.show = function(req, res) {
 
 // Creates a new schedule in the DB.
 exports.create = function(req, res) {
-  console.log('req.body', req.body);
   var newSchedule = new Schedule({
     startDate: req.body.data.attributes['start-date'],
     endDate: req.body.data.attributes['end-date'],
@@ -51,9 +50,9 @@ exports.create = function(req, res) {
   newSchedule.save(function (err, schedule) {
     if (err) return handleError(err);
 
-    res.status(201);
-
     sendMessages(schedule);
+
+    res.status(201);
   });
 };
 
