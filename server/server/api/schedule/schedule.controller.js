@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import merge from 'lodash/merge';
 import sendMessages from '../../lib/send-messages';
 import Schedule from './schedule.model';
 import Sitter from '../sitter/sitter.model';
@@ -63,7 +63,7 @@ exports.update = function(req, res) {
     if (err) { return handleError(res, err); }
     if(!schedule) { return res.status(404).send('Not Found'); }
 
-    let updated = _.merge(schedule, req.body.data.attributes);
+    let updated = merge(schedule, req.body.data.attributes);
 
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
