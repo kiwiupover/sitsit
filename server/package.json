@@ -40,7 +40,7 @@
     "start": "nodemon server/app.js --exec babel-node --presets es2015",
     "build": "babel server -d dist",
     "serve": "node dist/index.js",
-    "test": "mocha --compilers js:babel-register"
+    "test": "mocha tests/**/*-test.js -w --compilers js:babel-register"
   },
   "private": true
 }
