@@ -21,6 +21,17 @@ module.exports = function (grunt) {
 
   // Define the configuration for all the tasks
   grunt.initConfig({
+    babel: {
+			compile: {
+				options: {
+					sourceMap: true,
+					presets: ['es2015']
+				},
+				files: {
+					'./tmp/index-compiled.js': './index.js'
+				}
+			}
+		},
 
     // Project settings
     pkg: grunt.file.readJSON('package.json'),
@@ -312,6 +323,7 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('build', [
+    'babel',
     'clean:dist',
     'concurrent:dist',
     'copy:dist',
@@ -319,6 +331,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('default', [
+    'babel',
     'newer:jshint',
     'test',
     'build'

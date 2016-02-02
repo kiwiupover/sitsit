@@ -1,3 +1,4 @@
+console.log('APPPPPP');
 import ENV from 'dotenv';
 import scheduler from './lib/scheduler';
 
