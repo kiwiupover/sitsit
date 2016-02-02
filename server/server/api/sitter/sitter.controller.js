@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import merge from 'lodash/merge';
 import Sitter from './sitter.model';
 import sitterSerializer from './sitter.serializer';
 
@@ -41,7 +41,7 @@ exports.update = function(req, res) {
   Sitter.findById(req.params.id, function (err, sitter) {
     if (err) { return handleError(res, err); }
     if(!sitter) { return res.status(404).send('Not Found'); }
-    var updated = _.merge(sitter, req.body.data.attributes);
+    var updated = merge(sitter, req.body.data.attributes);
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
 

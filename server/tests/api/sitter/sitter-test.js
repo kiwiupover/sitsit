@@ -1,19 +1,17 @@
-'use strict';
+import should from 'should';
+import app from '../../../server/app';
+import request from 'supertest';
 
-var should = require('should');
-var app = require('../../app');
-var request = require('supertest');
-
-describe('GET /y', function() {
+describe('GET /api/sitter', function() {
 
   it('should respond with JSON array', function(done) {
     request(app)
-      .get('/y')
+      .get('/api/sitters')
       .expect(200)
       .expect('Content-Type', /json/)
       .end(function(err, res) {
         if (err) return done(err);
-        res.body.should.be.instanceof(Array);
+        res.body.data.should.be.instanceof(Array);
         done();
       });
   });
