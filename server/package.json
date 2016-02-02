@@ -28,8 +28,6 @@
     "connect-livereload": "~0.4.0",
     "jshint-stylish": "~0.1.5",
     "nodemon": "^1.8.1",
-    "open": "~0.0.4",
-    "requirejs": "~2.1.11",
     "should": "~3.3.1",
     "supertest": "~0.11.0"
   },
@@ -40,7 +38,7 @@
     "start": "nodemon server/app.js --exec babel-node --presets es2015",
     "build": "babel server -d dist",
     "serve": "node dist/index.js",
-    "test": "mocha tests/**/*-test.js -w --compilers js:babel-register"
+    "test": "mocha --watch --recursive --compilers js:babel-register 'tests/**/*-test.js'"
   },
   "private": true
 }
