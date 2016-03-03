@@ -1,5 +1,6 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
+let Sitter;
 
 const SitterSchema = new Schema({
   firstName: String,
@@ -8,4 +9,10 @@ const SitterSchema = new Schema({
   parentSecondayPhone: String
 });
 
-module.exports = mongoose.model('Sitter', SitterSchema);
+if (mongoose.models.Sitter) {
+  Sitter = mongoose.model('Sitter');
+} else {
+  Sitter = mongoose.model('Sitter', SitterSchema);
+}
+
+export default Sitter;

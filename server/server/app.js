@@ -3,7 +3,7 @@ import scheduler from './lib/scheduler';
 
 ENV.load();
 
-console.log('ENV', process.env.TwilioTesting);
+console.log('ENV twilio', process.env.TwilioTesting);
 
 /**
  * Main application file
@@ -12,11 +12,15 @@ console.log('ENV', process.env.TwilioTesting);
 // Set default node environment to development
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
+console.log('ENV Node', process.env.NODE_ENV);
+
 import express from 'express';
 import mongoose from 'mongoose';
 const config = require('./config/environment');
 
-scheduler();
+if (!process.env.NODE_ENV === 'test') {
+	scheduler();
+}
 
 // Connect to database
 mongoose.connect(config.mongo.uri, config.mongo.options);
