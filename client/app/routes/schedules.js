@@ -1,7 +1,10 @@
 import Ember from 'ember';
 import moment from 'moment';
 
-const { RSVP, isBlank } = Ember
+const {
+  RSVP,
+  isBlank
+} = Ember;
 
 export default Ember.Route.extend({
 
