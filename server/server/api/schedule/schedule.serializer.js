@@ -18,21 +18,29 @@ function scheduleSerializer(schedule) {
         ref: '_id',
         attributes: ['firstName', 'phone'],
         relationshipLinks: {
-          "self": "http://example.com/relationships/books",
-          "related": "http://example.com/books"
+          self: function (schedule, sitter) {
+            return `http://${serverUrl}/api/sitters/${sitter._id}`
+          },
+          "related": `http://${serverUrl}/api/sitters`
         },
         includedLinks: {
           self: function (schedule, sitter) {
-            return `http://${serverUrl}/api/client/${sitter._id}`
+            return `http://${serverUrl}/api/sitters/${sitter._id}`
           }
         }
       },
       client: {
         ref: '_id',
         attributes: ['familyName', 'phone'],
+        relationshipLinks: {
+          self: function (schedule, client) {
+            return `http://${serverUrl}/api/clients/${client._id}`
+          },
+          "related": `http://${serverUrl}/api/clients`
+        },
         includedLinks: {
           self: function (schedule, client) {
-            return `http://${serverUrl}/api/client/${client._id}`
+            return `http://${serverUrl}/api/clients/${client._id}`
           }
         }
       }

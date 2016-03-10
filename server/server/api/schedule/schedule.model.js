@@ -1,7 +1,8 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
+let Schedule;
 
-const ScheduleSchema = new Schema({
+let ScheduleSchema = new Schema({
   startDate: Date,
   endDate: Date,
   sentDayBeforeMessage: Boolean,
@@ -10,4 +11,11 @@ const ScheduleSchema = new Schema({
   client: { type: Schema.Types.ObjectId, ref: 'Client' }
 });
 
-module.exports = mongoose.model('Schedule', ScheduleSchema);
+
+if (mongoose.models.Schedule) {
+  Schedule = mongoose.model('Schedule');
+} else {
+  Schedule = mongoose.model('Schedule', ScheduleSchema);
+}
+
+export default Schedule;

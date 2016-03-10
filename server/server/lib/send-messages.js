@@ -25,27 +25,24 @@ function isPhonePresentPushNumber(phoneNumber, array){
   }
 }
 
-function now() {
-  return moment().utcOffset(800);
-}
-
 function isToday(date) {
-  let ret = moment(date).startOf('day').isSame(moment().startOf('day'));
-  return ret;
+  let dateStartOfDay = moment(date).startOf('day');
+  let today = moment().startOf('day');
+
+  return dateStartOfDay.isSame(today);
 }
 
 function isTomorrow(date) {
-  let datePlusOneDay = moment(date).add(1, 'days').startOf('day');
+  let dateStartOfDay = moment(date).startOf('day');
   let tomorrow = moment().add(1, 'days').startOf('day');
 
-  let ret = datePlusOneDay.isSame(tomorrow);
-  return ret;
+  return dateStartOfDay.isSame(tomorrow);
 }
 
 function messageDate(date) {
   let messageDate;
 
-  switch (date) {
+  switch (true) {
     case isToday(date):
       messageDate = 'today';
       break;
@@ -56,7 +53,7 @@ function messageDate(date) {
       let formatedDate = formatDate(date, 'ddd MMM Do');
       messageDate = `on ${formatedDate}`;
   }
-  console.log('messageDate', messageDate);
+
   return messageDate;
 }
 
