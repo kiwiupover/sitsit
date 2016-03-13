@@ -14,8 +14,14 @@ Router.map(function() {
       this.route('confirm');
     });
   });
-  this.route('clients');
-  this.route('sitters');
+  this.route('clients', function() {
+    this.route('new');
+  });
+  this.route('sitters', function() {
+    this.route('new');
+    this.route('sitter');
+  });
+
 });
 
 export default Router;

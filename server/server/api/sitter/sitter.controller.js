@@ -1,7 +1,7 @@
-import merge from 'lodash/merge';
 import Sitter from './sitter.model';
 import sitterSerializer from './sitter.serializer';
-
+import merge from 'lodash/merge';
+import camelCaseKeys from '../../lib/camelcase-keys';
 
 // Get list of sitters
 exports.index = function(req, res) {
@@ -25,7 +25,7 @@ exports.show = function(req, res) {
 
 // Creates a new sitter in the DB.
 exports.create = function(req, res) {
-  let newSitter = req.body.data.attributes;
+  let newSitter = camelCaseKeys(req.body.data.attributes);
 
   Sitter.create(newSitter, function(err, sitter) {
     if(err) { return handleError(res, err); }
@@ -41,7 +41,9 @@ exports.update = function(req, res) {
   Sitter.findById(req.params.id, function (err, sitter) {
     if (err) { return handleError(res, err); }
     if(!sitter) { return res.status(404).send('Not Found'); }
-    var updated = merge(sitter, req.body.data.attributes);
+
+    let updated = merge(sitter, camelCaseKeys(req.body.data.attributes));
+
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
 

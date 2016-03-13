@@ -2,7 +2,7 @@
 
   <div class="field {{if isStartDateInvalid 'error'}}">
     <label>Start date:</label>
-    {{pikaday-input value=startsAt minDate=minDate theme="dark-theme"}}
+    {{pikaday-input value=date minDate=minDate theme="dark-theme"}}
     {{#if isStartDateInvalid}}
       <p class="ui {{if isStartDateInvalid 'error'}}">{{v-get this 'startDate' 'message'}}</p>
     {{/if}}

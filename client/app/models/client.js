@@ -2,6 +2,6 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   familyName: DS.attr('string'),
-  phone: DS.attr('string'),
-  schedules: DS.hasMany('schedule')
+  primaryPhone: DS.attr('string'),
+  secondaryPhone: DS.attr('string')
 });

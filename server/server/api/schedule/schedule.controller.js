@@ -2,6 +2,7 @@ import merge from 'lodash/merge';
 import sendMessages from '../../lib/send-messages';
 import Schedule from './schedule.model';
 import Sitter from '../sitter/sitter.model';
+import camelCaseKeys from '../../lib/camelcase-keys';
 
 import ENV from 'dotenv';
 ENV.load();
@@ -40,12 +41,14 @@ exports.show = function(req, res) {
 
 // Creates a new schedule in the DB.
 exports.create = function(req, res) {
-  var newSchedule = new Schedule({
-    startDate: req.body.data.attributes['start-date'],
-    endDate: req.body.data.attributes['end-date'],
+  let attributes = camelCaseKeys(req.body.data.attributes);
+
+  attributes = merge(attributes, {
     sitter: req.body.data.relationships.sitter.data.id,
     client: req.body.data.relationships.client.data.id
   });
+
+  var newSchedule = new Schedule(attributes);
 
   newSchedule.save(function (err, schedule) {
     if (err) return handleError(err);

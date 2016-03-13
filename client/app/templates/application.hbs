@@ -1,10 +1,17 @@
-<div class="container-fluid">
+<div class="ui inverted attached menu">
+  <div class="ui container">
+    {{link-to 'Schedules' 'schedules' class='item'}}
+    {{link-to 'Clients' 'clients' class='item'}}
+    {{link-to 'Sitter' 'sitters' class='item'}}
+    {{!-- <div class="right item">
+      <div class="ui ">Login</div>
+    </div> --}}
+  </div>
+</div>
+<div class="container-fluid white-background">
   <div class="row">
     <div class="col-xs-12">
-      <h2 id="title">Welcome to Sit Sitter</h2>
-
       {{outlet}}
-
     </div>
   </div>
 </div>

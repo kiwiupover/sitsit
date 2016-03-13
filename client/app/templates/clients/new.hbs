@@ -1,0 +1,17 @@
+<h2>Add a Client</h2>
+
+<form class='ui form' {{action 'createClient' model on='submit'}}>
+  <div class="field">
+    {{input placeholder='Family Name' value=model.familyName}}
+  </div>
+
+  <div class="field">
+    {{phone-number placeholder='Primary Phone' value=model.primaryPhone}}
+  </div>
+
+  <div class="field">
+    {{phone-number placeholder='Secondary Phone' value=model.secondaryPhone}}
+  </div>
+
+  <button type="submit" class='ui primary button'>Create the Client</button>
+</form>

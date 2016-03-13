@@ -3,6 +3,8 @@ $base-border-radius: 3px !default;
 $base-line-height: 1.5em !default;
 $base-spacing: 1.5em !default;
 $action-color: #477DCA !default;
+$secondary-color: #E74C3C;
+$bg-color: #2980B9 !default;
 $dark-gray: #333 !default;
 $light-gray: #DDD !default;
 $medium-screen: em(640) !default;
@@ -35,6 +37,17 @@ p {
 a {
   color: $action-color;
   text-decoration: none;
+}
+
+.ember-application {
+  background: $bg-color;
+}
+
+.white-background {
+  max-width: 600px;
+  background: white;
+  padding: 30px;
+  box-shadow: 6px 6px 10px rgba($dark-gray, 0.1);
 }
 
 .type {

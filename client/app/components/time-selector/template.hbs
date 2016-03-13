@@ -11,7 +11,7 @@
   <div class="row between-xs">
     {{#each minutes as |min|}}
       <button class="box {{if (is-equal min minute) 'selected'}}" {{action 'setMinutes' min}}>
-        {{min}} mins
+        {{min}}
       </button>
     {{/each}}
   </div>
@@ -33,7 +33,7 @@
       </div>
     </div>
   {{/if}}
-  <div class="row around-xs">
+  <div class="row around-xs mtm">
     <button class="ui button primary fluid" {{action 'setTime'}} disabled={{isInvalid}}>
         Continue
     </button>

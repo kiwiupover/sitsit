@@ -1,0 +1,14 @@
+<h1>Sitters</h1>
+
+<div class="ui relaxed divided list">
+  {{#each model as |sitter|}}
+    <div class="item">
+      <div class="content">
+        {{link-to sitter.firstName sitter.client class='header'}}
+        <div class="description">phone: {{sitter.phone}}</div>
+      </div>
+    </div>
+  {{/each}}
+</div>
+
+{{link-to 'Add New Sitter' 'sitters.new' class="ui primary button"}}

@@ -1,6 +1,9 @@
 import Ember from 'ember';
 
-const { computed, observer } = Ember;
+const {
+  computed,
+  observer
+} = Ember;
 
 import {
   validator, buildValidations
@@ -25,10 +28,10 @@ export default Ember.Component.extend(Validations, {
   isClientInvalid: computed.and('didValidate', 'validations.attrs.client.isInvalid'),
   isSitterInvalid: computed.and('didValidate', 'validations.attrs.sitter.isInvalid'),
 
-  sendStartAt: observer('startsAt', function(){
-    if (this.startsAt) {
-      this.set('startDate', this.get('startsAt'));
-      this.attrs.startsAt(this.get('startsAt'));
+  sendStartAt: observer('date', function(){
+    if (this.get('date')) {
+      this.set('startDate', this.get('date'));
+      this.attrs.startsAt(this.get('date'));
     }
   }),
 

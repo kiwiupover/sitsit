@@ -15,7 +15,7 @@ function sendMessage(numbers, message) {
   return numbers.forEach(function(number){
     return client.sendMessage({
 
-        to: number, // Any number Twilio can deliver to
+        to: `+1 ${number}`, // Any number Twilio can deliver to
         from: process.env.TwilioPhone, // A number you bought from Twilio and can use for outbound communication
         body: message // body of the SMS message
 

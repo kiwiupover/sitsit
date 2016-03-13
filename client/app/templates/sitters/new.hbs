@@ -1,0 +1,21 @@
+<h2>Add a Sitter</h2>
+
+<form class='ui form' {{action 'createSitter' model on='submit'}}>
+  <div class="field">
+    {{input placeholder='First Name' value=model.firstName}}
+  </div>
+
+  <div class="field">
+    {{phone-number placeholder='Phone' value=model.phone}}
+  </div>
+
+  <div class="field">
+    {{phone-number placeholder='Parent Primary Phone' value=model.parentPrimaryPhone}}
+  </div>
+
+  <div class="field">
+    {{phone-number placeholder='Parent Secondary Phone' value=model.parentSecondayPhone}}
+  </div>
+
+  <button type="submit" class='ui primary button'>Create the Sitter</button>
+</form>

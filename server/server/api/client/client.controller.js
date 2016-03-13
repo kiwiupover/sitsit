@@ -1,6 +1,7 @@
 import merge from 'lodash/merge';
 import Client from './client.model';
 import clientSerializer from './client.serializer';
+import camelCaseKeys from '../../lib/camelcase-keys';
 
 // Get list of clients
 exports.index = function(req, res) {
@@ -25,7 +26,7 @@ exports.show = function(req, res) {
 
 // Creates a new client in the DB.
 exports.create = function(req, res) {
-   Client.create(req.body.data.attributes, function(err, client) {
+   Client.create(camelCaseKeys(req.body.data.attributes), function(err, client) {
     if(err) { return handleError(res, err); }
     res.status(201)
 
@@ -39,7 +40,7 @@ exports.update = function(req, res) {
   Client.findById(req.params.id, function (err, client) {
     if (err) { return handleError(res, err); }
     if(!client) { return res.status(404).send('Not Found'); }
-    var updated = merge(client, req.body.data.attributes);
+    var updated = merge(client, camelCaseKeys(req.body.data.attributes));
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
       res.status(200)
