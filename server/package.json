@@ -38,7 +38,7 @@
     "start": "nodemon server/app.js --exec babel-node --presets es2015 --sourceMaps",
     "debug": "nodemon --exec babel-node --debug --presets es2015 server/app.js",
     "build": "babel server -d dist",
-    "serve": "node dist/index.js",
+    "serve": "node dist/app.js",
     "test": "NODE_ENV='test' mocha --watch --recursive --compilers js:babel-register 'tests/**/*-test.js'"
   },
   "private": true
