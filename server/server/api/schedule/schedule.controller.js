@@ -45,7 +45,9 @@ exports.create = function(req, res) {
 
   attributes = merge(attributes, {
     sitter: req.body.data.relationships.sitter.data.id,
-    client: req.body.data.relationships.client.data.id
+    client: req.body.data.relationships.client.data.id,
+    sentDayBeforeMessage: false,
+    sentHourBeforeMessage: false
   });
 
   var newSchedule = new Schedule(attributes);

@@ -15,7 +15,7 @@ export default function() {
   let today = {
     startTime: in1hour,
     endTime: now,
-    sentMessage: 'sentDayOfMessage'
+    sentMessage: 'sentHourBeforeMessage'
   }
 
   let tomorrow = {
@@ -27,19 +27,21 @@ export default function() {
   let sendingSchedule = [today, tomorrow];
 
   schedule.scheduleJob(hourly, function(){
-    console.log('scheduler');
     sendingSchedule.forEach((sender) => {
+
       Schedule.find({
 
         startDate: {
           $gte: sender.startTime.toDate(),
-          $lt: sender.endTime.toDate()
+          $lt: sender.endTime.toDate(),
         }
+
 
       }).exec(function (err, schedules) {
         if(err) { console.log('err', err); }
 
         schedules.forEach((schedule) => {
+
           let s = schedule.toJSON();
           if (s[sender.sentMessage]) {
             return;
@@ -52,8 +54,6 @@ export default function() {
 
           sendMessages(schedule);
         });
-
-        console.log('schedules', schedules.length);
       });
     });
   });
