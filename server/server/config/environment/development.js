@@ -8,7 +8,7 @@ module.exports = {
     uri: 'mongodb://localhost/sitsit-dev'
   },
 
-  hostUrl: 'http://localhost:9000',
+  hostUrl: 'localhost:9000',
 
   seedDB: false
 };

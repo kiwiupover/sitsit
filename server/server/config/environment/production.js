@@ -20,5 +20,5 @@ module.exports = {
             process.env.OPENSHIFT_MONGODB_DB_URL+process.env.OPENSHIFT_APP_NAME ||
             'mongodb://localhost/sitsit'
   },
-  hostUrl: 'http://159.203.236.44'
+  hostUrl: '159.203.236.44'
 };
