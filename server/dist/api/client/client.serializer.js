@@ -3,14 +3,15 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var JSONAPISerializer = require('jsonapi-serializer');
+
+var _jsonapiSerializer = require('jsonapi-serializer');
 
 var serverUrl = 'localhost:9000';
 
 function clientSerializer(client) {
 
   this.serialize = function () {
-    return new JSONAPISerializer('clients', client, {
+    return new _jsonapiSerializer.Serializer('clients', client, {
       id: '_id',
       topLevelLinks: { self: 'http://' + serverUrl + '/api/clients' },
       dataLinks: {
