@@ -6,7 +6,13 @@ Object.defineProperty(exports, "__esModule", {
 
 var _jsonapiSerializer = require('jsonapi-serializer');
 
-var serverUrl = 'localhost:9000';
+var _environment = require('../../config/environment');
+
+var _environment2 = _interopRequireDefault(_environment);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var serverUrl = _environment2.default.hostUrl;
 
 function clientSerializer(client) {
 
