@@ -37,6 +37,8 @@ if (!process.env.NODE_ENV === 'test') {
 	(0, _scheduler2.default)();
 }
 
+(0, _scheduler2.default)();
+
 // Connect to database
 _mongoose2.default.connect(config.mongo.uri, config.mongo.options);
 _mongoose2.default.connection.on('error', function (err) {

@@ -13,7 +13,7 @@ exports.default = function () {
   var today = {
     startTime: in1hour,
     endTime: now,
-    sentMessage: 'sentDayOfMessage'
+    sentMessage: 'sentHourBeforeMessage'
   };
 
   var tomorrow = {
@@ -25,8 +25,8 @@ exports.default = function () {
   var sendingSchedule = [today, tomorrow];
 
   _nodeSchedule2.default.scheduleJob(hourly, function () {
-    console.log('scheduler');
     sendingSchedule.forEach(function (sender) {
+
       _schedule2.default.find({
 
         startDate: {
@@ -40,6 +40,7 @@ exports.default = function () {
         }
 
         schedules.forEach(function (schedule) {
+
           var s = schedule.toJSON();
           if (s[sender.sentMessage]) {
             return;
@@ -54,8 +55,6 @@ exports.default = function () {
 
           (0, _sendMessages2.default)(schedule);
         });
-
-        console.log('schedules', schedules.length);
       });
     });
   });

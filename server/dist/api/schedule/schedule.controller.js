@@ -74,7 +74,9 @@ exports.create = function (req, res) {
 
   attributes = (0, _merge2.default)(attributes, {
     sitter: req.body.data.relationships.sitter.data.id,
-    client: req.body.data.relationships.client.data.id
+    client: req.body.data.relationships.client.data.id,
+    sentDayBeforeMessage: false,
+    sentHourBeforeMessage: false
   });
 
   var newSchedule = new _schedule2.default(attributes);
