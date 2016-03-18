@@ -1,6 +1,6 @@
 import { Serializer } from 'jsonapi-serializer';
-
-const serverUrl = 'localhost:9000';
+import config from '../../config/environment';
+const serverUrl = config.hostUrl;
 
 function sitterSerializer(sitter) {
 
