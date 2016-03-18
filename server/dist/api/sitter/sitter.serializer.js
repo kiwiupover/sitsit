@@ -6,16 +6,12 @@ Object.defineProperty(exports, "__esModule", {
 
 var _jsonapiSerializer = require('jsonapi-serializer');
 
-var _jsonapiSerializer2 = _interopRequireDefault(_jsonapiSerializer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 var serverUrl = 'localhost:9000';
 
 function sitterSerializer(sitter) {
 
   this.serialize = function () {
-    return new _jsonapiSerializer2.default('sitters', sitter, {
+    return new _jsonapiSerializer.Serializer('sitters', sitter, {
       id: '_id',
       topLevelLinks: { self: 'http://' + serverUrl + '/api/sitters' },
       dataLinks: {

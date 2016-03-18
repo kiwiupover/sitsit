@@ -1,11 +1,11 @@
-import JSONAPISerializer from 'jsonapi-serializer';
+import { Serializer } from 'jsonapi-serializer';
 
 const serverUrl = 'localhost:9000';
 
 function scheduleSerializer(schedule) {
 
   this.serialize = function () {
-    return new JSONAPISerializer('schedules', schedule, {
+    return new Serializer('schedules', schedule, {
       id: '_id',
       topLevelLinks: { self: `http://${serverUrl}/api/schedules` },
       dataLinks: {

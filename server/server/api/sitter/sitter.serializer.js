@@ -1,11 +1,11 @@
-import JSONAPISerializer from 'jsonapi-serializer';
+import { Serializer } from 'jsonapi-serializer';
 
 const serverUrl = 'localhost:9000';
 
 function sitterSerializer(sitter) {
 
   this.serialize = function () {
-    return new JSONAPISerializer('sitters', sitter, {
+    return new Serializer('sitters', sitter, {
       id: '_id',
       topLevelLinks: { self: `http://${serverUrl}/api/sitters` },
       dataLinks: {

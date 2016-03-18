@@ -12,7 +12,7 @@
     "errorhandler": "~1.0.0",
     "express": "^4.9.0",
     "express-session": "~1.0.2",
-    "jsonapi-serializer": "^2.0.4",
+    "jsonapi-serializer": "^3.0.0",
     "lodash": "^4.1.0",
     "method-override": "~1.0.0",
     "moment": "^2.10.6",

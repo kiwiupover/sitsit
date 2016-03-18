@@ -1,11 +1,11 @@
-let JSONAPISerializer = require('jsonapi-serializer');
+import { Serializer } from 'jsonapi-serializer';
 
 const serverUrl = 'localhost:9000';
 
 function clientSerializer(client) {
 
   this.serialize = function () {
-    return new JSONAPISerializer('clients', client, {
+    return new Serializer('clients', client, {
       id: '_id',
       topLevelLinks: { self: `http://${serverUrl}/api/clients` },
       dataLinks: {
