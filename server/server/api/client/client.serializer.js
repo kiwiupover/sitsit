@@ -1,4 +1,4 @@
-import JSONAPISerializer from 'jsonapi-serializer';
+let JSONAPISerializer = require('jsonapi-serializer');
 
 const serverUrl = 'localhost:9000';
 
