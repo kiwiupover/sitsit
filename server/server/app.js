@@ -1,5 +1,6 @@
 import ENV from 'dotenv';
 import scheduler from './lib/scheduler';
+import cors from 'express-cors';
 
 ENV.load();
 
@@ -38,9 +39,10 @@ if(config.seedDB) { require('./config/seed'); }
 const app = express();
 const server = require('http').createServer(app);
 
+console.log('corsUrl', config.corsUrl);
 app.use(cors({
 	allowedOrigins: [
-		'sittertracker.com'
+		config.corsUrl
 	]
 }));
 
