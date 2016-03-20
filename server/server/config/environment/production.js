@@ -11,7 +11,7 @@ module.exports = {
   // Server port
   port:     process.env.OPENSHIFT_NODEJS_PORT ||
             process.env.PORT ||
-            8080,
+            80,
 
   // MongoDB connection options
   mongo: {
@@ -20,5 +20,5 @@ module.exports = {
             process.env.OPENSHIFT_MONGODB_DB_URL+process.env.OPENSHIFT_APP_NAME ||
             'mongodb://localhost/sitsit'
   },
-  hostUrl: '159.203.236.44'
+  hostUrl: 'api.sittertracker.com'
 };

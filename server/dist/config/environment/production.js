@@ -14,5 +14,5 @@ module.exports = {
           mongo: {
                     uri: process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || process.env.OPENSHIFT_MONGODB_DB_URL + process.env.OPENSHIFT_APP_NAME || 'mongodb://localhost/sitsit'
           },
-          hostUrl: '159.203.236.44'
+          hostUrl: 'api.sittertracker.com'
 };

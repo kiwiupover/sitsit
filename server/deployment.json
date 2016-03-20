@@ -13,8 +13,8 @@
       "ref"  : "origin/master",
       "repo" : "git@github.com:kiwiupover/sitsit.git",
       "path" : "/home/code/sitsit",
-      "pre-deploy-local" : "echo 'This is a local executed command'"
-      "post-deploy" : "npm install && pm2 startOrRestart deployment.json --env production"
+      "pre-deploy-local" : "echo 'This is a local executed command'",
+      "post-deploy" : "npm install && pm2 startOrRestart deployment.json --env production",
       "env"  : {
         "NODE_ENV": "production"
       }
