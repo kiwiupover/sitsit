@@ -10,6 +10,7 @@ module.exports = {
   },
 
   hostUrl: 'localhost:9000',
+  corsUrl: 'localhost:4200',
 
   seedDB: false
 };

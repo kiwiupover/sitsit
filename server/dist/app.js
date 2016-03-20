@@ -8,6 +8,10 @@ var _scheduler = require('./lib/scheduler');
 
 var _scheduler2 = _interopRequireDefault(_scheduler);
 
+var _expressCors = require('express-cors');
+
+var _expressCors2 = _interopRequireDefault(_expressCors);
+
 var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
@@ -53,6 +57,12 @@ if (config.seedDB) {
 // Setup server
 var app = (0, _express2.default)();
 var server = require('http').createServer(app);
+
+console.log('corsUrl', config.corsUrl);
+app.use((0, _expressCors2.default)({
+	allowedOrigins: [config.corsUrl]
+}));
+
 require('./config/express')(app);
 require('./routes')(app);
 
