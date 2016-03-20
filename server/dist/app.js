@@ -60,7 +60,7 @@ var server = require('http').createServer(app);
 
 console.log('corsUrl', config.corsUrl);
 app.use((0, _expressCors2.default)({
-	allowedOrigins: [config.corsUrl]
+	allowedOrigins: [config.corsUrl, 'client.surge.sh']
 }));
 
 require('./config/express')(app);

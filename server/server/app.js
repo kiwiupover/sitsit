@@ -42,7 +42,7 @@ const server = require('http').createServer(app);
 console.log('corsUrl', config.corsUrl);
 app.use(cors({
 	allowedOrigins: [
-		config.corsUrl
+		config.corsUrl, 'client.surge.sh'
 	]
 }));
 
