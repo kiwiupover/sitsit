@@ -37,6 +37,13 @@ if(config.seedDB) { require('./config/seed'); }
 // Setup server
 const app = express();
 const server = require('http').createServer(app);
+
+app.use(cors({
+	allowedOrigins: [
+		'sittertracker.com'
+	]
+}));
+
 require('./config/express')(app);
 require('./routes')(app);
 
