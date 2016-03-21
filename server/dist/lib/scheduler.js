@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function () {
-  var now = (0, _moment2.default)().utcOffset(800);
+  var now = (0, _moment2.default)().utcOffset(700);
   var in1hour = (0, _moment2.default)(now).subtract(1, 'hours');
   var tomorrowDate = (0, _moment2.default)(now).add(1, 'days');
   var tomorrowPlus1Hour = (0, _moment2.default)(tomorrow).add(1, 'hours');

@@ -7,7 +7,7 @@ const hourly = new schedule.RecurrenceRule();
 hourly.minutes = 59;
 
 export default function() {
-  let now = moment().utcOffset(800);
+  let now = moment().utcOffset(700);
   let in1hour = moment(now).subtract(1, 'hours');
   let tomorrowDate = moment(now).add(1, 'days');
   let tomorrowPlus1Hour = moment(tomorrow).add(1, 'hours');

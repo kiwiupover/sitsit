@@ -1,7 +1,7 @@
 import moment from 'moment';
 
 function formatDate(date, format='L') {
-  return moment.utc(date).format(format);
+  return moment.parseZone(date).format(format);
 }
 
 export default formatDate;
