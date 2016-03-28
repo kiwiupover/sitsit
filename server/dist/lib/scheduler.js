@@ -5,10 +5,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function () {
-  var now = (0, _moment2.default)().utcOffset(700);
-  var in1hour = (0, _moment2.default)(now).subtract(1, 'hours');
-  var tomorrowDate = (0, _moment2.default)(now).add(1, 'days');
-  var tomorrowPlus1Hour = (0, _moment2.default)(tomorrow).add(1, 'hours');
+  var now = (0, _momentTimezone2.default)().tz("America/Los_Angeles");
+  var in1hour = (0, _momentTimezone2.default)(now).subtract(1, 'hours');
+  var tomorrowDate = (0, _momentTimezone2.default)(now).add(1, 'days');
+  var tomorrowPlus1Hour = (0, _momentTimezone2.default)(tomorrow).add(1, 'hours');
 
   var today = {
     startTime: in1hour,
@@ -72,9 +72,9 @@ var _schedule = require('../api/schedule/schedule.model');
 
 var _schedule2 = _interopRequireDefault(_schedule);
 
-var _moment = require('moment');
+var _momentTimezone = require('moment-timezone');
 
-var _moment2 = _interopRequireDefault(_moment);
+var _momentTimezone2 = _interopRequireDefault(_momentTimezone);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

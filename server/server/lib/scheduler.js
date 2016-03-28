@@ -1,13 +1,13 @@
 import schedule from 'node-schedule'
 import sendMessages from './send-messages';
 import Schedule from '../api/schedule/schedule.model';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 const hourly = new schedule.RecurrenceRule();
 hourly.minutes = 59;
 
 export default function() {
-  let now = moment().utcOffset(700);
+  let now = moment().tz("America/Los_Angeles");
   let in1hour = moment(now).subtract(1, 'hours');
   let tomorrowDate = moment(now).add(1, 'days');
   let tomorrowPlus1Hour = moment(tomorrow).add(1, 'hours');

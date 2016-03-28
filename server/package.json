@@ -17,6 +17,7 @@
     "lodash": "^4.1.0",
     "method-override": "~1.0.0",
     "moment": "^2.10.6",
+    "moment-timezone": "^0.5.3",
     "mongoose": "~4.0.3",
     "morgan": "~1.0.0",
     "node-schedule": "^0.6.0",
