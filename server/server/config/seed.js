@@ -16,6 +16,7 @@ var clientSeed = require('../api/client/client.seed.json');
 var sitterSeed = require('../api/sitter/sitter.seed.json');
 
 // Insert seed inserts below
+debugger;
 Schedule.find({}).remove(function() {
 	Schedule.create(scheduleSeed);
 });

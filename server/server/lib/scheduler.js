@@ -36,12 +36,11 @@ export default function() {
           $lt: sender.endTime.toDate(),
         }
 
-
       }).exec(function (err, schedules) {
         if(err) { console.log('err', err); }
 
         schedules.forEach((schedule) => {
-
+          debugger;
           let s = schedule.toJSON();
           if (s[sender.sentMessage]) {
             return;

@@ -23,8 +23,6 @@ if (!process.env.NODE_ENV === 'test') {
 	scheduler();
 }
 
-scheduler();
-
 // Connect to database
 mongoose.connect(config.mongo.uri, config.mongo.options);
 mongoose.connection.on('error', function(err) {

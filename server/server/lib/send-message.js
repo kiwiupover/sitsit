@@ -25,8 +25,8 @@ function sendMessage(numbers, message) {
         }
 
         if (!err) { // "err" is an error received during the request, if any
-            console.log(responseData.from); // outputs "+14506667788"
-            console.log(responseData.body); // outputs "word to your mother."
+          console.log(responseData.from); // outputs "+14506667788"
+          console.log(responseData.body); // outputs "word to your mother."
         }
     });
   });
