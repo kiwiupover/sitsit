@@ -20,6 +20,10 @@ var _camelcaseKeys = require('../../lib/camelcase-keys');
 
 var _camelcaseKeys2 = _interopRequireDefault(_camelcaseKeys);
 
+var _moment = require('moment');
+
+var _moment2 = _interopRequireDefault(_moment);
+
 var _dotenv = require('dotenv');
 
 var _dotenv2 = _interopRequireDefault(_dotenv);
@@ -34,7 +38,11 @@ _dotenv2.default.load();
 
 // Get list of schedules
 exports.index = function (req, res) {
-  _schedule2.default.find().exec(function (err, schedules) {
+  _schedule2.default.find({
+    startDate: {
+      $gte: (0, _moment2.default)().subtract(61, 'minutes')
+    }
+  }).sort({ startDate: 'asc' }).exec(function (err, schedules) {
     if (err) {
       return handleError(res, err);
     }

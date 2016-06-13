@@ -37,7 +37,8 @@ console.log('ENV Node', process.env.NODE_ENV);
 
 var config = require('./config/environment');
 
-if (!process.env.NODE_ENV === 'test') {
+if (process.env.NODE_ENV !== 'test') {
+	console.log('Started the scheduler');
 	(0, _scheduler2.default)();
 }
 
@@ -70,4 +71,8 @@ server.listen(config.port, config.ip, function () {
 });
 
 // Expose app
-exports = module.exports = app;
+
+exports = module.exports = {
+	app: app,
+	server: server
+};
