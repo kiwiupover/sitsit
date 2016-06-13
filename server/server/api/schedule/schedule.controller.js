@@ -3,6 +3,7 @@ import sendMessages from '../../lib/send-messages';
 import Schedule from './schedule.model';
 import Sitter from '../sitter/sitter.model';
 import camelCaseKeys from '../../lib/camelcase-keys';
+import moment from 'moment';
 
 import ENV from 'dotenv';
 ENV.load();
@@ -11,7 +12,13 @@ import scheduleSerializer from './schedule.serializer';
 
 // Get list of schedules
 exports.index = function(req, res) {
-  Schedule.find().exec(function (err, schedules) {
+  Schedule.find({
+    startDate: {
+      $gte: moment().subtract(61, 'minutes'),
+    }
+  })
+  .sort({startDate: 'asc'})
+  .exec(function (err, schedules) {
     if(err) { return handleError(res, err); }
 
     res.status(200);

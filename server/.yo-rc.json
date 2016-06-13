@@ -16,24 +16,5 @@
     "filters": {
       "mongoose": true
     }
-  },
-  "generator-ng-component": {
-    "routeDirectory": "client/app/",
-    "directiveDirectory": "client/app/",
-    "filterDirectory": "client/app/",
-    "serviceDirectory": "client/app/",
-    "basePath": "client",
-    "moduleName": "",
-    "filters": [],
-    "extensions": [],
-    "directiveSimpleTemplates": "",
-    "directiveComplexTemplates": "",
-    "filterTemplates": "",
-    "serviceTemplates": "",
-    "factoryTemplates": "",
-    "controllerTemplates": "",
-    "decoratorTemplates": "",
-    "providerTemplates": "",
-    "routeTemplates": ""
   }
 }

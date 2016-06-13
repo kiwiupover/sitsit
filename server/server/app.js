@@ -19,7 +19,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 const config = require('./config/environment');
 
-if (!process.env.NODE_ENV === 'test') {
+if (process.env.NODE_ENV !== 'test') {
+	console.log('Started the scheduler');
 	scheduler();
 }
 
@@ -53,4 +54,8 @@ server.listen(config.port, config.ip, function () {
 });
 
 // Expose app
-exports = module.exports = app;
+
+exports = module.exports = {
+	app: app,
+	server: server
+}

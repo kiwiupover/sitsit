@@ -1,8 +1,14 @@
 import should from 'should';
-import app from '../../../server/app';
+import { app, server } from '../../../server/app';
 import request from 'supertest';
 
+
 describe('GET /api/schedules', ()=> {
+
+  afterEach( function(done){
+    server.close();
+    done();
+  });
 
   it('should respond with JSON array', (done)=> {
     request(app)
